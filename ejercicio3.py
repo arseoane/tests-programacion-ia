@@ -36,6 +36,7 @@ def log_operacion(func):
     def wrapper(*args, **kwargs):
         print(f"Executando método: {func.__name__}")
         return func(*args, **kwargs)
+    return wrapper
 
 class ItemBiblioteca:
     def __init__(self,codigo,titulo):
