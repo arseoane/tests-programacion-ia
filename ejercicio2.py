@@ -27,7 +27,7 @@ import csv
 
 
 try:
-    with open("biblioteca.csv","r") as biblioteca:
+    with open("biblioteca.csv","r", encoding="UTF-8") as biblioteca:
         next(biblioteca)
         csvreader = csv.reader(biblioteca)
 
@@ -42,15 +42,20 @@ try:
 
         match opcion:
             case 1:
-                with open("biblioteca.csv", "a") as biblioteca:
+                with open("biblioteca.csv", "a", encoding="UTF-8") as biblioteca:
+                    biblioteca.write("\n")
                     writer = csv.writer(biblioteca)
                     writer.writerow([input("Título: "), input("Autor: "), int(input("Páginas: "))])
 
             case 2:
-                with open("biblioteca.csv", "r") as biblioteca:
+                with open("biblioteca.csv", "r", encoding="UTF-8") as biblioteca:
                     next(biblioteca)
                     for libro in biblioteca:
-                        print(libro)
+                        if libro == '\n' or libro == '':
+                            print("",end="")
+                        else:
+                            datos = libro.split(",")
+                            print(Libro(datos[0], datos[1], int(datos[2])))
 
             case 3:
                 break
