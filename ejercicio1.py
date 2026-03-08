@@ -21,5 +21,4 @@ class Libro:
     def __str__(self):
         return f"Libro: {self.titulo} - Autor: {self.autor} ({self.paginas} págs)"
 
-libro1 = Libro("Quijote", "Miguel Cervantes", 5)
-print(libro1)
+
